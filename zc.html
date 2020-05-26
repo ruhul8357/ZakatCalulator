@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="https://img.icons8.com/emoji/512/000000/mosque-emoji.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>Zakat Calculator</title>
+
+    <style>
+        body {
+            background-color: #cd982a;
+        }
+
+
+
+        @font-face {
+            font-family: salatHead;
+            src: url(zc/Salat.woff2);
+        }
+
+        @font-face {
+            font-family: salatBody;
+            src: url(zc/Satat_body.woff2);
+            font-weight: bold;
+        }
+
+        table {
+            font-family: salatHead;
+            border-collapse: collapse;
+            width: 400px;
+        }
+
+        th {
+            width: auto;
+            font-family: salatHead;
+            border-bottom: 1px solid #800000;
+            padding: 10px;
+            text-align: center;
+            color: #ffffff;
+            font-size: x-large;
+        }
+
+        td {
+            width: auto;
+            font-family: salatBody;
+            border-bottom: 1px solid #800000;
+            padding: 10px;
+            text-align: left;
+            color: #800000;
+            font-size: small;
+
+        }
+
+        tr:nth-child(even) {
+        }
+
+        td:nth-child(even) {
+            text-align: right;
+            color: white;
+        }
+
+        input {
+            color: maroon;
+            font-weight: bold;
+            border-radius: .1rem;
+            margin: 0pt;
+            border: none;
+        }
+
+        /* thoughtbot (inspired by thoughtbot.com)
+*******************************************************************************/
+        button.thoughtbot {
+            background-color: #ee432e;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee432e), color-stop(50%, #c63929), color-stop(50%, #b51700), color-stop(100%, #891100));
+            background-image: -webkit-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -moz-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -ms-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: -o-linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            background-image: linear-gradient(top, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+            border: 1px solid #951100;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+            box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+            color: #fff;
+            font: bold 20px/1 "helvetica neue", helvetica, arial, sans-serif;
+            padding: 12px 0 14px 0;
+            text-align: center;
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+            width: 150px;
+        }
+
+        button.thoughtbot:hover {
+            background-color: #f37873;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f37873), color-stop(50%, #db504d), color-stop(50%, #cb0500), color-stop(100%, #a20601));
+            background-image: -webkit-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+            background-image: -moz-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+            background-image: -ms-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+            background-image: -o-linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+            background-image: linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+            cursor: pointer;
+        }
+
+        button.thoughtbot:active {
+            background-color: #d43c28;
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d43c28), color-stop(50%, #ad3224), color-stop(50%, #9c1500), color-stop(100%, #700d00));
+            background-image: -webkit-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+            background-image: -moz-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+            background-image: -ms-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+            background-image: -o-linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+            background-image: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+            -webkit-box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
+            box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
+        }
+
+        .ppp{
+            font-size:medium;
+            color: maroon;
+            text-align: center;
+        }
+
+    </style>
+
+
+    <script type="text/javascript" src="zkt_calc.js"></script>
+</head>
+<body>
+
+
+<div class="main">
+<div align="center">
+
+        <img src="zc/m1.png" alt="">
+
+
+
+</div>
+    <div class="div_table" align="center">
+        <table>
+            <th colspan="2">Zakat Calculator</th>
+
+            <tr>
+                <td> Price of 22k Gold (per gram):</td>
+                <td><input type="number"id="gold22_price" value="4141"></td>
+                <td>Tk</td>
+            </tr>
+
+            <tr>
+                <td>Price of 21k Gold (per gram):</td>
+                <td><input type="number" id="gold21_price" value="3980"></td>
+                <td>Tk</td>
+            </tr>
+
+            <tr>
+                <td>Price of 18k Gold (per gram):</td>
+                <td><input type="number" id="gold18_price" value="3637"></td>
+                <td>Tk</td>
+            </tr>
+            <tr>
+                <td>Price of Silver (per gram):</td>
+                <td><input type="number"id="silver_price" value="64"></td>
+                <td>Tk</td>
+            </tr>
+
+            <!--    amount part        -->
+            <tr>
+                <td>Amount of 22k Gold (in gram):</td>
+                <td><input type="number"id="gold22_amount" value="0"></td>
+                <td>gm</td>
+            </tr>
+
+            <tr>
+                <td>Amount of 21k Gold (in gram):</td>
+                <td><input type="number" id="gold21_amount" value="0"></td>
+                <td>gm</td>
+            </tr>
+
+            <tr>
+                <td>Amount of 18k Gold (in gram):</td>
+                <td><input type="number" id="gold18_amount" value="0"></td>
+                <td>gm</td>
+            </tr>
+
+            <tr>
+                <td>Amount of Silver (in gram):</td>
+                <td><input type="number" id="silver_amount" value="0"></td>
+                <td>gm</td>
+            </tr>
+            <tr>
+                <td>Savings in Bank:</td>
+                <td><input type="number" id="bankSavings" value="0"></td>
+                <td>Tk</td>
+            </tr>
+            <tr>
+                <td>Cash Savings:</td>
+                <td><input type="number" id="cashSavings" value="0"></td>
+                <td>Tk</td>
+            </tr>
+
+            <tr>
+                <td>DSOP Savings:</td>
+                <td><input type="number" id="dsopSavings" value="0"></td>
+                <td>Tk</td>
+            </tr>
+
+            <tr>
+                <td>Prize Bonds:</td>
+                <td><input type="number" id="pbSavings" value="0"></td>
+                <td>Tk</td>
+            </tr>
+
+            <tr>
+                <td>Shanchaypatra/other Savings:</td>
+                <td><input type="number" id="shanchaySavings" value="0"></td>
+                <td>Tk</td>
+            </tr>
+            <!--    calculate          -->
+            <tr>
+                <td>
+                    <button class="thoughtbot" onclick="calculate()">Calculate</button>
+                </td>
+                <td><p id="zakatp" align="left"></p></td>
+            </tr>
+        </table>
+        <p class="ppp"> *1 Vori = 11.66 gm (approx)</p>
+    </div>
+</div>
+
+
+</body>
+</html>
